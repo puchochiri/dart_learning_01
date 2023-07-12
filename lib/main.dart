@@ -57,8 +57,114 @@ void main() {
 
   final allMembers = blackPinkList.reduce((value, element) => value + ', ' + element); //리스트를 순회하며 값들을 더합니다.
   print(allMembers);
+
+  //실행 dart lib/main.dart
+  final allMembers1 = blackPinkList.fold<int>(0, (value, element) => value + element.length);
+  print(allMembers1);
+
+  Map<String, String> dictionary = {
+    'Harry Potter' : '해리 포터',   // 키 : 값
+    'Ron Weasley'  : '론 위즐리',
+    'Hermione Granger' : '헤르미온느 그레인저',
+  };
+  print(dictionary['Harry Potter']);
+  print(dictionary['Hermione Granger']);
+
+  print(dictionary.keys);
+  print(dictionary.keys.toList());
+  // Iterable이 반환되기 때문에 .toList()를 실행해서 List
+  print(dictionary.values);
+  print(dictionary.values.toList());
+
+  Set<String> blankPink3 = {'로제', '지수', '리사', '제니', '제니'}; // 제니 중복
+  print(blankPink3);
+  print(blankPink3.contains('로제')); // 값이 있는지 확인
+  print(blankPink3.toList()); // 리스트로 변환하기
+
+  List<String> blackPink4 = ['로제','지수', '지수'];
+  print(Set.from(blackPink4)); // List 타입을 Set 타입으로 변환
+
+  double number = 2;
+
+  print(number + 2); // 4 출력
+  print(number - 2); // 0 출력
+  print(number * 2); // 4 출력
+  print(number / 2); // 1 출력. 나눈 몫
+  print(number % 3); // 2 출력. 나눈 나머지
+
+  //단항 연산도 됩니다.
+  print(number++); // 3
+  print(number--); // 2
+  print(number += 2); // 4
+  print(number -= 2); // 2
+  print(number *= 2); // 4
+  print(number /= 2); // 2
+
+  //타입 뒤에 ?를 명시해서 null 값을 가질 수 있습니다.
+  double? number1 = 1;
+  print(number1);
+
+  // 타입 뒤에 ?를 명시하지 않아 에러가 남.
+  double? number2 = null;
+  print(number2);
+
+  double? number3;
+  print(number3);
+
+  // ??를 사용하면 기존 값이 null일 때만 저장 됩니다.
+  number3 ??=3;
+  print(number3);
+
+  // null이 아니므로 3이 유지 됩니다.
+  number3 ??=4;
+  print(number3);
+
+  int number4 = 1;
+  int number5 = 2;
+
+  print(number4 > number5); //false
+  print(number4 < number5); //true
+  print(number4 >= number5); //false
+  print(number4 <= number5); //true
+  print(number4 == number5); //false
+  print(number4 != number5); //true
+
+
+  int number6 = 1;
+
+  print(number6 is int); //true
+  print(number6 is String); //false
+  print(number6 is! int); //false !는 반대를 의미(int 타입이 아닌 경우 true);
+  print(number6 is! String); //true
+
+  bool result = 12 > 10 && 1 > 0; //12가 10보다 크고 1이 0보다 클 때
+  print(result); //true;
+
+  bool result2 = 12 > 10 && 0 > 1; //12가 10보다 크고 0이 1보다 클 때
+  print(result2); //false;
+
+  bool result3= 12 > 10 || 1 > 0; //12가 10보다 크거나 1이 0보다 클 때
+  print(result3); //true;
+
+  bool result4 = 12 > 10 || 0 > 1; //12가 10보다 크거나 0이 1보다 클 때
+  print(result4); //true;
+
+  bool result5 = 12 < 10 || 0 > 1; //10가 12보다 크거나 0이 1보다 클 때
+  print(result5); //false;
+
+
+
+
+
+
+
+
+
+
 }
 void annotation() {
+
+ //Status.approved
   // 주석을 작성하는 첫 번째 방법은
   // 한 줄 주석 입니다.
 
@@ -78,6 +184,8 @@ void annotation() {
 }
 
 void main1() {
+
+
   dynamic name = '코드팩토리';
   name =1;
   print(name);
