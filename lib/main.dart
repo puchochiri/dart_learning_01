@@ -1,3 +1,8 @@
+enum Status {
+  approved,
+  pending,
+  rejected,
+}
 void main() {
   var name = '코드팩토리';
   print(name);
@@ -152,11 +157,43 @@ void main() {
   bool result5 = 12 < 10 || 0 > 1; //10가 12보다 크거나 0이 1보다 클 때
   print(result5); //false;
 
+  // 조건문
+  int number7 = 2;
 
+  if (number % 3 == 0) {
+    print('3의 배수입니다.');
+  } else if (number % 3 ==1) {
+    print('나머지가 1입니다.');
+  } else {
+    //조건에 맞지 않기 때문에 다음 코드 실행
+    print('맞는 조건이 없습니다.');
+  }
 
+  Status status =Status.approved;
+  switch (status) {
+    case Status.approved:
+      // approved 값이기 때문에 다음 코드가 실행 됩니다.
+      print('승인 상태입니다.');
+      break;
+    case Status.pending:
+      print('대기 상태입니다.');
+      break;
+    case Status.rejected:
+      print('거절 상태입니다.');
+      break;
+    default:
+      print('알 수 없는 상태입니다.');
 
+  }
 
+  for (int i = 0; i < 3; i++) {
+    print(i);
+  }
 
+  List<int> numberList = [3,6,9];
+  for(int number in numberList){
+    print(number);
+  }
 
 
 
