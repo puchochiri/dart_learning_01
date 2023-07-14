@@ -196,9 +196,88 @@ void main() {
   }
 
 
+  int total = 0;
+  do {
+    total += 1;
+  } while(total < 10);
 
+  print(total);
 
+  print(addTwoNumbers(1, 2));
+  print(addTwoNumbers1(a: 2, b: 3));
+  print(addTwoNumbers3(1));
+  print(addTwoNumbers4(a:1));
+  print(addTwoNumbers5(1,b: 3,c: 7));
+
+  //일반 함수로 모든 값 더하기
+  List<int> numbers = [1, 2, 3, 4, 5];
+  final allMembers2 = numbers.reduce((value, element) {
+    return value + element;
+  });
+
+  print(allMembers2);
+
+  final allMembers3 = numbers.reduce((value, element) => value + element);
+
+  print(allMembers3);
+
+  calculate(1,2,add);
+
+  try {
+    //에러가 없을 때 실행할 로직
+    final String name = '코드팩토리';
+    print(name); //에러가 없으니 출력됩
+
+    // throw 키워드로 고의적으로 에러를 발생 시킴
+    throw Exception('이름이 잘못됐습니다.');
+  } catch(e) {  // catch는 첫번째 매개변수에 에러 정보를 전달해 줍니다.
+    //에러가 있을 때 실행할 로직
+    print(e);
+  }
 }
+
+typedef Operation = void Function(int x, int y);
+
+void add(int x, int y) {
+  print('결괏값 : ${x + y}');
+}
+
+void calculate(int x, int y, Operation oper) {
+  oper(x, y);
+}
+
+int addTwoNumbers(int a, int b) {
+  return a + b;
+}
+
+int addTwoNumbers1({
+  required int a,
+  required int b,
+}) {
+  return a + b;
+}
+
+int addTwoNumbers3(int a,[int b = 2]) {
+  return a + b;
+}
+
+int addTwoNumbers4({
+  required int a,
+  int b = 2,
+}) {
+  return a + b;
+}
+
+int addTwoNumbers5(
+int a, {
+  required int b,
+  int c = 4,
+}) {
+  return a + b + c;
+}
+
+
+
 void annotation() {
 
  //Status.approved
