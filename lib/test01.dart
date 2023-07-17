@@ -51,8 +51,121 @@ void main() {
   blackPink5.name = '에이핑크'; // 세터
   print(blackPink5.name); // 게터
 
+  BoyGroup bts1 = BoyGroup('BTS', 7); // 생성자로 객체 생성
+  bts1.sayName();         // 부모한테 물려받은 매소드
+  bts1.sayMembersCount(); // 부모한테 물려받은 메서드
+  bts1.sayMale();         // 자식이 새로 추가한 메서드
+
+  GirlGroup blackPink6 = GirlGroup('블랙핑크', 4);
+
+  blackPink6.sayName(); //자식 클래스의 오버라이드된 메서드 사용
+
+  // sayMembersCount는 오버라이드하지 않았기 때문에
+  // 그대로 Idol 클래스의 메서드가 실행됩니다.
+  // 부모 클래스의 메서드 사용
+  blackPink6.sayMembersCount();
+
+  GirlGroup2 blackPink7 =GirlGroup2('블랙핑크1', 7);
+  blackPink7.sayName();
+  blackPink7.sayMembersCount();
+
+  BoyGroup1 bts4 = BoyGroup1('BTS', 7);
+  bts4.sing();
+  bts4.sayName();
+  bts4.sayMembersCount();
+  bts4.sayMale();
+}
+//믹스인
+mixin IdolSingMixin on Idol6{
+  void sing() {
+    print('${this.name}이 노래를 부릅니다.');
+  }
+}
+
+//믹스인을 적용할 때는 with 키워드 서용
+class BoyGroup1 extends Idol6 with IdolSingMixin{
+  BoyGroup1(
+      super.name,
+      super.membersCount,
+  );
+
+  void sayMale() {
+    print('저는 남자 아이돌입니다.');
+  }
+
+  //믹스인에 정의된 sing() 함수 사용 가능
+}
+
+//인터페이스
+class GirlGroup2 implements Idol6 {
+  final String name;
+  final int membersCount;
+  GirlGroup2(
+      this.name,
+      this.membersCount,
+      );
+
+  @override
+  void sayMembersCount() {
+    // TODO: implement sayMembersCount
+    print('${this.name} 멤버는 ${this.membersCount}명입니다.');
+  }
+
+  @override
+  void sayName() {
+    // TODO: implement sayName
+    print('저는 여자 아이돌 ${this.name}입니다.');
+
+  }
+
 
 }
+//오버라이드
+class GirlGroup extends Idol6 {
+  GirlGroup(super.name, super.membersCount);
+
+  @override
+  void sayName(){
+    print('저는 여자 아이돌 ${this.name}입니다.');
+  }
+
+}
+
+
+//상속
+class Idol6 {
+  final String name;
+  final int membersCount;
+
+  Idol6(this.name, this.membersCount);
+  void sayName() {
+    print('저는 ${this.name}입니다.');
+  }
+
+  void sayMembersCount() {
+    print('${this.name} 멤버는 ${this.membersCount}명입니다.');
+  }
+}
+
+class BoyGroup extends Idol6
+  {
+    // 상속받은 기능
+    BoyGroup(
+        String  name,
+        int membersCount
+    ) : super( // super는 부모 클래스를 지칭합니다.
+        name,
+        membersCount,
+    );
+
+    //상속받지 않은 기능
+    void sayMale(){
+    print('저는 남자 아이돌 입니다.');
+
+  }
+
+  }
+
 // getter//setter
 class Idol5 {
   String _name = '블랙핑크';
