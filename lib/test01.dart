@@ -74,6 +74,88 @@ void main() {
   bts4.sayName();
   bts4.sayMembersCount();
   bts4.sayMale();
+
+  GirlGroup3 blackPink8 = GirlGroup3('블랙핑크8',8);
+  blackPink8.sayName();
+  blackPink8.sayMembersCount();
+
+
+
+
+  //T의 타입을 List<int>로 입력합니다.
+  final cache = Cache<List<int>>(
+    data: [1,2,3],
+  );
+  //제네릭에 입력된 값을 통해 data 변수의 타입이 자동으로 유추됩니다.
+  //reduce() 함수가 기억나지 않는다면 1.4.1절 'List 타입'을 복습하세요.
+  print(cache.data.reduce((value, element) => value + element));
+
+  Counter count1 = Counter();
+  Counter count2 = Counter();
+  Counter count3 = Counter();
+
+  //cascade operator (..)을 사용하면
+  //선언한 변수의 메서드를 연속으로 실행할 수 있습니다.
+  Idol6 blackpink9 = Idol6('블랙핑크',4)
+  ..sayName()
+  ..sayMembersCount();
+
+}
+
+
+
+//스태틱
+class Counter{
+  // static 키워드를 사용해서 static 변수 선언
+  static int i = 0;
+
+
+  // static 키워드를 사용해서 static 변수 선언
+  Counter(){
+    //i++;
+    print(i++);
+  }
+}
+
+//제네릭
+//인스턴스화 할 때 입력받는 타입을 T로 지정합니다.
+class Cache<T> {
+//data의 타입을 추후 입력될 T타입으로 지정합니다.
+  final T data;
+
+  Cache({
+    required this.data,
+  });
+}
+
+
+
+// abstract 키워드를 사용해 추상 클래스 지정
+abstract class Idol7 {
+  final String name;
+  final int membersCount;
+
+  Idol7(this.name, this.membersCount); // 생성자 선언
+
+  void sayName();         //  추상 메서드 선언
+  void sayMembersCount(); //  추상 메서드 선언
+}
+
+//implements 키워드를 사용해 추상 클래스를 구현하는 클래스
+class GirlGroup3 implements Idol7{
+  final String name;
+  final int membersCount;
+
+  GirlGroup3(
+      this.name,
+      this.membersCount,
+      );
+  void sayName() {
+    print('저는 여자 아이돌8 ${this.name}입니다.');
+  }
+  void sayMembersCount(){
+    print('${this.name} 멤버는 ${this.membersCount}명입니다.');
+  }
 }
 //믹스인
 mixin IdolSingMixin on Idol6{
